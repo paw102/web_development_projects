@@ -1,6 +1,10 @@
-import { Box, Container } from "@mui/material";
+import { Box } from "@mui/material";
 import Index from './components/Index'
 import './App.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import List from './components/list'
+import Article from './components/article'
 
 function App() {
 
@@ -17,7 +21,14 @@ function App() {
       background: '#f5f5f5',
       boxShadow:'0 4px 30px rgba(0, 0, 0, 0.15)'
     }}>
-      <Index/>
+      
+    <Router>
+      <Routes>
+        <Route path="/" element={<Index />}/>
+        <Route path="/list" element={<List/>}/>
+        <Route path= "/article" element={<Article/>}/>
+    </Routes>
+    </Router>
     </Box>
   )
 }

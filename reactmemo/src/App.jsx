@@ -1,10 +1,11 @@
 import { Box } from "@mui/material";
-import Index from './components/Index'
+import Index from './components/Index';
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import List from './components/list'
 import Article from './components/article'
+
 
 function App() {
 

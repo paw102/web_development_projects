@@ -1,6 +1,8 @@
 import { Box, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
+import Clock from "./clock";
+
 
 function List(){
   const navigate = useNavigate();
@@ -19,6 +21,7 @@ function List(){
         color: '#fff',
       }}>
         <h1>메모 목록</h1>
+        <Clock/>
       </Box>
       <br />
     <Button onClick={gotoArticle} sx={{
@@ -31,8 +34,8 @@ function List(){
       fontWeight: 'bold',
       cursor: 'pointer',
       transition: 'background 0.3s',
-    }}>
-    메모 작성</Button>
+      textAlign: 'center',
+    }}>메모 작성</Button>
     </Box>
   )
 }

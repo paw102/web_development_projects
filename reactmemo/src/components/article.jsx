@@ -12,7 +12,7 @@ function Article(){
 
 
   return(
-    <Box >
+    <Box>
       <Box sx={{
       margin: 'auto',
       display: 'flex',
@@ -39,24 +39,45 @@ function Article(){
     <Box sx={{
       width: 'auto',
       background: '#f9f9f9',
-      aspectRatio: 2,
-      margin: '30px auto',
-      padding: 'auto',
+      aspectRatio: 4 / 3,
+      margin: '50px auto',
+      padding: '40px',
       display: 'flex',
       flexDirection:'column',
       gap: '20px',
       border: '2px solid #ccc',
       borderRadius: '20px',
       boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+      // justifyContent: 'center',
+      textAlign: 'center',
     }}>
       <Input type="text" disableUnderline placeholder="제목을 입력하시오." sx={{
-        width: '100%',
-        height: 'auto',
-        padding: 'auto',
-        fontSize: '24px',
+        width: 'auto',
+        height: '50px',
+        padding: '12px',
+        fontSize: '20px',
         border: '2px solid #ccc',
         borderRadius: '10px',
       }}/>
+
+      <TextField type="text" variant="outlined" placeholder="내용을 입력하시오." multiline rows={11} sx={{
+      '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        border: 'none', // 기본 테두리 제거
+        }},
+        border: '2px solid #ccc',
+        borderRadius: '10px',
+        }}/>
+
+        <Input type="text" disableUnderline placeholder="작성자 이름" sx={{
+          width: '50%',
+          height: '50px',
+          padding: '10px',
+          fontSize: '16px',
+          border: '2px solid #ccc',
+          borderRadius: '10px',
+          alignSelf: 'flex-end',
+        }}/>
     
       <Button onClick={gotoIndex} sx={{
       width: 'auto',

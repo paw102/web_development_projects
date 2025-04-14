@@ -25,6 +25,7 @@ function List(){
       </Box>
       <br />
     <Button onClick={gotoArticle} sx={{
+      margin: '10px',
       width: 'auto',
       background: '#333',
       color: '#fff',

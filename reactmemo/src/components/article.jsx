@@ -2,8 +2,35 @@ import { Button, Box, Typography, TextField, Input } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 import Clock from "./clock";
+import { useState } from "react";
 
 function Article(){
+
+  const [ title, setTitle ] = useState('');
+  const [ content, setContent ] = useState('');
+  const [ writer, setWriter ] = useState('');
+
+  const handleSubmit = () => {
+    let boardInputDatas = {
+      id: 0,
+      title: title.trim(),
+      content: content.trim(),
+      writer: writer.trim(),
+    }
+
+    let boardDatas = localStorage.getItem("boardDatas")
+    ? JSON.parse(localStorage.getItem("boardDatas"))
+    : [];
+
+  boardInputDatas.id = boardDatas.length;
+  boardDatas.push({ ...boardInputDatas });
+
+  localStorage.setItem("boardDatas", JSON.stringify(boardDatas));
+  
+  navigate('/list');
+
+  }
+
   const navigate = useNavigate();
 
   const gotoIndex = () => {
@@ -51,7 +78,7 @@ function Article(){
       // justifyContent: 'center',
       textAlign: 'center',
     }}>
-      <Input type="text" disableUnderline placeholder="제목을 입력하시오." sx={{
+      <Input type="text" value={title} disableUnderline placeholder="제목을 입력하시오." onChange={(e) => setTitle(e.target.value)} sx={{
         width: 'auto',
         height: '50px',
         padding: '12px',
@@ -60,7 +87,7 @@ function Article(){
         borderRadius: '10px',
       }}/>
 
-      <TextField type="text" variant="outlined" placeholder="내용을 입력하시오." multiline rows={11} sx={{
+      <TextField type="text" value={content} variant="outlined" placeholder="내용을 입력하시오." multiline rows={11} onChange={(e) => setContent(e.target.value)} sx={{
       '& .MuiOutlinedInput-root': {
       '& fieldset': {
         border: 'none', // 기본 테두리 제거
@@ -69,7 +96,7 @@ function Article(){
         borderRadius: '10px',
         }}/>
 
-        <Input type="text" disableUnderline placeholder="작성자 이름" sx={{
+        <Input type="text" value={writer} disableUnderline placeholder="작성자 이름" onChange={(e) => setWriter(e.target.value)} sx={{
           width: '50%',
           height: '50px',
           padding: '10px',
@@ -79,7 +106,7 @@ function Article(){
           alignSelf: 'flex-end',
         }}/>
     
-      <Button onClick={gotoIndex} sx={{
+      <Button onClick={handleSubmit} sx={{
       width: 'auto',
       background: '#333',
       color: '#fff',

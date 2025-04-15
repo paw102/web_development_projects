@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import Clock from "./clock";
 
+import BoardData from "./boardData";
+
 
 function List(){
   const navigate = useNavigate();
@@ -24,6 +26,7 @@ function List(){
         <Clock/>
       </Box>
       <br />
+      <BoardData />
     <Button onClick={gotoArticle} sx={{
       margin: '10px',
       width: 'auto',
